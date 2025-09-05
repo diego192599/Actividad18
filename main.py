@@ -50,3 +50,17 @@ class Banda(Participantes):
             return f"{base} | Categoría: {self._categoria} | Total: {self.total}"
         else:
             return f"{base} | Categoría: {self._categoria} | Sin evaluación"
+
+class Concurso:
+    def __init__(self,nombre,fecha):
+        self.nombre=nombre
+        self.fecha=fecha
+        self.bandas=[]
+
+    def inscirbir(self,banda):
+        for  b in self.bandas:
+            if b.nombreBanda==banda.nombreBanda:
+                print(f"La banda con el nombre {banda.nombreBanda} ya existe")
+                return
+            self.bandas.append(banda)
+
