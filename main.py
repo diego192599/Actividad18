@@ -164,18 +164,18 @@ class ConcursoBandasApp:
         ventana.geometry("400x300")
         ventana.configure(bg="#f9f9f9")
 
-        frame = tk.Frame(ventana, padx=15, pady=15, bg="#f9f9f9")
+        frame = tk.Frame(ventana, padx=15, pady=15, bg="white")
         frame.pack(expand=True, fill="both")
 
-        tk.Label(frame, text="Nombre de la Banda:", bg="#f9f9f9").pack(anchor="w", pady=(10, 0))
+        tk.Label(frame, text="Nombre de la Banda:", bg="light blue").pack(anchor="w", pady=(10, 0))
         entry_nombre = tk.Entry(frame, width=40)
         entry_nombre.pack(fill="x")
 
-        tk.Label(frame, text="Institución:", bg="#f9f9f9").pack(anchor="w", pady=(10, 0))
+        tk.Label(frame, text="Institución:", bg="powder blue").pack(anchor="w", pady=(10, 0))
         entry_institucion = tk.Entry(frame, width=40)
         entry_institucion.pack(fill="x")
 
-        tk.Label(frame, text="Categoría (Primaria, Basico, Diversificado):", bg="#f9f9f9").pack(anchor="w",
+        tk.Label(frame, text="Categoría (Primaria, Basico, Diversificado):", bg="navy").pack(anchor="w",
                                                                                                 pady=(10, 0))
         var_categoria = tk.StringVar(ventana)
         var_categoria.set(Banda.categoriasValidas[0])
@@ -212,9 +212,9 @@ class ConcursoBandasApp:
 
         button_frame = tk.Frame(frame, bg="#f9f9f9")
         button_frame.pack(fill="x", pady=15)
-        tk.Button(button_frame, text="Guardar ✅", command=guardar, bg="#4caf50", fg="white").pack(side="left",
+        tk.Button(button_frame, text="Guardar", command=guardar, bg="#4caf50", fg="white").pack(side="left",
                                                                                                   expand=True, padx=5)
-        tk.Button(button_frame, text="Limpiar 🧹", command=limpiar, bg="#ff9800", fg="white").pack(side="right",
+        tk.Button(button_frame, text="Limpiar", command=limpiar, bg="#ff9800", fg="white").pack(side="right",
                                                                                                   expand=True, padx=5)
 
     def registrar_evaluacion(self):
@@ -264,10 +264,10 @@ class ConcursoBandasApp:
 
         button_frame = tk.Frame(frame, bg="#f9f9f9")
         button_frame.pack(fill="x", pady=15)
-        tk.Button(button_frame, text="Guardar Puntajes ✅", command=guardar, bg="#4caf50", fg="white").pack(side="left",
+        tk.Button(button_frame, text="Guardar Puntajes ", command=guardar, bg="#4caf50", fg="white").pack(side="left",
                                                                                                            expand=True,
                                                                                                            padx=5)
-        tk.Button(button_frame, text="Limpiar 🧹", command=limpiar, bg="#ff9800", fg="white").pack(side="right",
+        tk.Button(button_frame, text="Limpiar ", command=limpiar, bg="#ff9800", fg="white").pack(side="right",
                                                                                                   expand=True, padx=5)
 
     def listar_bandas(self):
