@@ -122,7 +122,7 @@ class Concurso:
             label_mensaje.config(text=f"Error al cargar bandas: {e}", fg="red")
 
 
-class ConcursoAPP:
+class ConcursoBandasApp:
     def __init__(self):
         self.concurso = Concurso("Concurso Escolar", "14/09/2025")
         self.ventana = tk.Tk()
@@ -130,33 +130,33 @@ class ConcursoAPP:
         self.ventana.geometry("700x500")
         self.ventana.configure(bg="#f0f0f0")
 
-        self.create_main_screen()
+        self.menu()
+
+        tk.Label(
+            self.ventana,
+            text="Sistema de Inscripción y Evaluación de Bandas Escolares\nConcurso 14 de Septiembre - Quetzaltenango",
+            font=("Arial", 14, "bold"),
+            justify="center",
+            bg="#f0f0f0"
+        ).pack(pady=(50, 10))
+
         self.label_feedback = tk.Label(self.ventana, text="", bg="#f0f0f0", font=("Arial", 10))
         self.label_feedback.pack(pady=(0, 10))
         self.concurso.cargar_desde_archivo(self.label_feedback)
 
         self.ventana.mainloop()
 
-    def create_main_screen(self):
-        main_frame = tk.Frame(self.ventana, padx=20, pady=20, bg="#f0f0f0")
-        main_frame.pack(expand=True, fill="both")
-
-        tk.Label(main_frame, text="Sistema de Inscripción y Evaluación de Bandas Escolares", font=("Arial", 14, "bold"),
-                 bg="#f0f0f0").pack(pady=(0, 5))
-        tk.Label(main_frame, text="Concurso 14 de Septiembre - Quetzaltenango", font=("Arial", 12), bg="#f0f0f0").pack(
-            pady=(0, 20))
-
-        button_frame = tk.Frame(main_frame, bg="#f0f0f0")
-        button_frame.pack(pady=10)
-
-        tk.Button(button_frame, text="Inscribir Banda ", command=self.inscribir_banda, width=20, height=2,
-                  bg="#c8e6c9", fg="black").grid(row=0, column=0, padx=10, pady=10)
-        tk.Button(button_frame, text="Registrar Evaluación ", command=self.registrar_evaluacion, width=20, height=2,
-                  bg="#b3e5fc", fg="black").grid(row=0, column=1, padx=10, pady=10)
-        tk.Button(button_frame, text="Listar Bandas ", command=self.listar_bandas, width=20, height=2, bg="#ffecb3",
-                  fg="black").grid(row=1, column=0, padx=10, pady=10)
-        tk.Button(button_frame, text="Ver Ranking ", command=self.ver_ranking, width=20, height=2, bg="#ffcdd2",
-                  fg="black").grid(row=1, column=1, padx=10, pady=10)
+    def menu(self):
+        barra = tk.Menu(self.ventana)
+        opciones = tk.Menu(barra, tearoff=0)
+        opciones.add_command(label="Inscribir Banda", command=self.inscribir_banda)
+        opciones.add_command(label="Registrar Evaluación", command=self.registrar_evaluacion)
+        opciones.add_command(label="Listar Bandas", command=self.listar_bandas)
+        opciones.add_command(label="Ver Ranking", command=self.ver_ranking)
+        opciones.add_separator()
+        opciones.add_command(label="Salir", command=self.ventana.quit)
+        barra.add_cascade(label="Opciones", menu=opciones)
+        self.ventana.config(menu=barra)
 
     def inscribir_banda(self):
         ventana = tk.Toplevel(self.ventana)
@@ -315,4 +315,4 @@ class ConcursoAPP:
 
 
 if __name__ == "__main__":
-    ConcursoAPP()
+    ConcursoBandasApp()
